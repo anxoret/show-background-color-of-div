@@ -4,15 +4,14 @@ class Root {
         element.onclick = this.onClick.bind(this);
     }
 
-    showBackgroundColor() {
-        // console.log(this._element.style.backGroundColor;
-        console.log("Ух!");
+    showBackgroundColor(target) {
+        console.log(target.style.backgroundColor);
     }
 
     onClick(event) {
         let action = event.target.dataset.action;
         if (action) {
-            this[action]();
+            this[action](event.target);
         }
     }
 
@@ -28,5 +27,5 @@ let rootDivs = root.getElementsByTagName("div");
 let arrayFromRootDivs = Array.from(rootDivs);
 
 arrayFromRootDivs.forEach(div => {
-    giveAnAttribute(div, "date-action", "showBackgroundColor");
+    giveAnAttribute(div, "data-action", "showBackgroundColor");
 });
